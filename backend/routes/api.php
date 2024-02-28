@@ -23,10 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('authenticated', [App\Http\Controllers\AuthController::class, 'authenticated']); //Data of the current logged user
     Route::get('user', [App\Http\Controllers\AuthController::class, 'user']); //Data of the current logged user
     Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout']);
-    Route::get('users', [App\Http\Controllers\UserController::class, 'getAll']); //Data of all the users in the system
+    Route::get('users', [App\Http\Controllers\UserController::class, 'getAll']); 
     Route::post('users/create', [App\Http\Controllers\UserController::class, 'create']);
-    Route::get('users/{id}', [App\Http\Controllers\UserController::class, 'getUserById']); //Data of all the users in the system
-    // Route::post('users/create', [App\Http\Controllers\UserController::class, 'create']);
+    Route::get('users/{id}', [App\Http\Controllers\UserController::class, 'getUserById']); 
     Route::put('users/{id}', [App\Http\Controllers\UserController::class, 'update']);
     Route::put('users/update-password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword']);
     Route::post('users/update-picture/{id}', [App\Http\Controllers\UserController::class, 'updateProfilePicture']);

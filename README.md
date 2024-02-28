@@ -50,11 +50,15 @@ but you dont need to, just get the password to the Data Base in the .env file an
 
 To start with a new set of data
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5b9e505 (Readme 4)
 | Run in the console:                                        |        Command         |
 |------------------------------------------------------------|------------------------|
 | Run migrations so the tables can be iserted into the DB    | `php artisian migrate` |
 | Run the seed function to populate the table Users          | `php artisian db:seed` |
 | Run the backend                                            | `php artisian serve`   |
+<<<<<<< HEAD
 
 To start with previus set of data download the DB backup in the folder of the project, and restore it to a DB named "thiio_app" or change the name in the .env file in the backed folder root. Just fin the line that contains "DB_DATABASE="
 Requierement:
@@ -94,6 +98,8 @@ For the Unit Testing, most of the time I just apply the Red-Green-Refactor.
 | Run migrations so the tables can be iserted into the DB       | `php artisian migrate` |
 | Run the seed function to populate the table Users             | `php artisian db:seed` |
 | Run the backend                                               | `php artisian serve`   |
+=======
+>>>>>>> 5b9e505 (Readme 4)
 
 To start with previus set of data download the DB backup in the folder of the project, and restore it to a DB named "thiio_app" or change the name in the .env file in the backed folder root. Just fin the line that contains "DB_DATABASE="
 Requierement:
@@ -101,10 +107,28 @@ Requierement:
 
 Now once restored the DB and configured the .env file. We are ready.
 
-| Run in the console:                                           |     Command    |
-|---------------------------------------------------------------|----------------|
-| Run the backend                                               | `php artisian serve`   |
-To test with Postman:
+| RunRun in the console:                                    |        Command         |
+|-----------------------------------------------------------|------------------------|
+| Run the backend                                           |  `php artisian serve`  |
+
+
+There are a few endpoint on this projects:
+
+| Run in the console:                                           |     Objective        |
+|---------------------------------------------------------------|----------------------|
+| http://localhost:8000/apilogin/                               |        Login         |
+| http://localhost:8000/api/authenticated/                      | Check Authentication |
+| http://localhost:8000/api/users/                              |   Get Current User   |
+| http://localhost:8000/api/users/logout                        |        Log Out       |
+| http://localhost:8000/api/users/users                         |    Get All  Users    |
+| http://localhost:8000/api/users/create                        |     Add New User     |
+| http://localhost:8000/api/users/{id}                          |     Get One User     |
+| http://localhost:8000/api/users/{id}                          |    Update One User   |
+| http://localhost:8000/api/users/update-password/{id}          |   Update User Pass   |
+| http://localhost:8000/api/users/update-picture/{id}           |   Upd. User Picture  |
+| http://localhost:8000/api/users/{id}                          |     Remove an User   |
+
+
 
 
 >>>>>>> 61fdc0c (Readme 1)
