@@ -95,8 +95,15 @@ For the Unit Testing, most of the time I just apply the Red-Green-Refactor.
 | Run the seed function to populate the table Users             | `php artisian db:seed` |
 | Run the backend                                               | `php artisian serve`   |
 
+To start with previus set of data download the DB backup in the folder of the project, and restore it to a DB named "thiio_app" or change the name in the .env file in the backed folder root. Just fin the line that contains "DB_DATABASE="
+Requierement:
+- MySql
 
+Now once restored the DB and configured the .env file. We are ready.
 
+| Run in the console:                                           |     Command    |
+|---------------------------------------------------------------|----------------|
+| Run the backend                                               | `php artisian serve`   |
 To test with Postman:
 
 
