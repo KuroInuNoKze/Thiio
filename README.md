@@ -129,6 +129,8 @@ There are a few endpoint on this projects:
 | http://localhost:8000/api/users/{id}                          |     Remove an User   |
 
 
-
+I follow architecture MVVM architecture for Vue and the Laravel backend offers a service-oriented architecture.
+Available test can be run by the command in the console  "php artisan test" or "vendor/bin/phpunit"
+For the Unit Testing, most of the time I just apply the Red-Green-Refactor.
 
 >>>>>>> 61fdc0c (Readme 1)
