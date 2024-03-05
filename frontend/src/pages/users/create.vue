@@ -87,7 +87,7 @@ export default {
                 minLength: v => (v && v.length >= 8) || `This field must be at least 8 characters`,
             },
             emailRules: [
-                v => (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(v)) || 'Must be a valid e-mail.',
+                v => (/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(v)) || 'Must be a valid e-mail.',
             ],
             passwordRules: [
                 v => (user.value.password === user.value.passwordConfirm) || 'Password and Password confirmation must match.',

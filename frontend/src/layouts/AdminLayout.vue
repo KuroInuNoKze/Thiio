@@ -40,18 +40,19 @@ import { handleRequestError } from '@/assets/js/utils'
 export default {
   name: 'AdminLayout',
   setup() {
+    // default-profile-picture.png
     const router = useRouter()
     const store = useStore()
 
-    const user = (store.getters.getUser)
-    const userAvatar = (import.meta.env.VITE__RES_PROFILE_URL + store.getters.getUser.profile_picture)
+    const user = ref(store.getters.getUser)
+    const userAvatar = ref(import.meta.env.VITE__RES_PROFILE_URL + (store.getters.getUser.profile_picture || import.meta.env.VITE__API_PROFILE_PICTURE_DEFAULT))
     
 
     const checkUser = () => {
       console.log(user.value)
     }
     const updateUserEven = () => {
-      userAvatar.value = import.meta.env.VITE__RES_PROFILE_URL + store.getters.getUser.profile_picture
+      userAvatar.value = import.meta.env.VITE__RES_PROFILE_URL + (store.getters.getUser.profile_picture || import.meta.env.VITE__API_PROFILE_PICTURE_DEFAULT)
       user.value = store.getters.getUser
     }
     const logout = async () => {

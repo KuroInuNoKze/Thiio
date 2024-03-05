@@ -1,12 +1,11 @@
 <template>
     <div class="user-form-page">
-
         <NotificationDialog :dialog="dialog.show" :title="dialog.title" :message="dialog.message" :icon="dialog.icon"
             @closeDialog="closeDialog" />
         <div class="back-button-cont"> <v-btn type="button" text="Back" @click="back"></v-btn> </div>
 
         <v-card class="user-card">
-            <v-card-title class="text-center">Update User # {{ id }}</v-card-title>
+            <v-card-title class="text-center">Update User # {{ id }} </v-card-title>
             <v-card-item>
                 <v-form ref="formPicture" validate-on="submit lazy" @submit.prevent="submitPicture">
                     <div class="profile-img-holder"><v-avatar size="60"><v-img :src="userPicture.picture"
@@ -63,15 +62,20 @@ export default {
     setup(props, context) {
         const router = useRouter()
         const store = useStore()
-
         const dialog = ref({ title: '', message: '', icon: '', show: false })
         const closeDialog = () => { dialog.value.show = false }
+
+        const formData = ref(null)
+        const loadingData = ref(false)
+        const userData = ref({ name: '', email: '', profile_picture:'' })
 
         const formPicture = ref(null)
         const loadingPicture = ref(false)
         const userPictureModel = ref(null)
+        const defaultUserPicture =  'default-profile-picture.png'
+
         const pictureRef = ref(null)
-        const userPicture = ref({ picture: import.meta.env.VITE__RES_PROFILE_URL + '/default-profile-picture.png' })
+        const userPicture = ref({ picture: import.meta.env.VITE__RES_PROFILE_URL + (userData.value.profile_picture || defaultUserPicture) })
         const previewPicture = (e) => {
             let base64String = "";
             if (e.target.files && e.target.files[0]) {
@@ -83,19 +87,14 @@ export default {
                 reader.readAsDataURL(e.target.files[0])
             }
             else
-                userPicture.value.picture = import.meta.env.VITE__RES_PROFILE_URL + '/default-profile-picture.png'
+                userPicture.value.picture = import.meta.env.VITE__RES_PROFILE_URL + defaultUserPicture
         }
 
-        const formData = ref(null)
-        const loadingData = ref(false)
-        const userData = ref({ name: '', email: '' })
 
 
         const formPassword = ref(null)
         const loadingPassword = ref(false)
         const userPassword = ref({ password: '', passwordConfirm: '' })
-
-
 
         const message = ref('')
         const customErrorMessages = ref({ name: [], email: [], password: [], passwordConfirm: [], picture: [] })
@@ -106,11 +105,10 @@ export default {
                 minLength: v => (v && v.length >= 8) || `This field must be at least 8 characters`,
             },
             emailRules: [
-                v => (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(v)) || 'Must be a valid e-mail.',
+                v => (/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(v)) || 'Must be a valid e-mail.',
             ],
             passwordRules: [
                 v => (userPassword.value.password === userPassword.value.passwordConfirm) || 'Password and Password confirmation must match.',
-                // v => (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).test(v) || 'asdasA<sub>s</sub>d',
             ],
         }
         onMounted(() => {
@@ -120,8 +118,8 @@ export default {
             await axios.get(
                 import.meta.env.VITE__API_URL + "/users/" + props.id, { withCredentials: true }
             ).then((response) => {
-                userData.value = { name: response.data.name, email: response.data.email }
-                userPicture.value.picture = import.meta.env.VITE__RES_PROFILE_URL + response.data.profile_picture
+                userData.value = { name: response.data.name, email: response.data.email, profile_picture: response.data.profile_picture }
+                userPicture.value.picture = import.meta.env.VITE__RES_PROFILE_URL + (userData.value.profile_picture || defaultUserPicture)
             }).catch(e => Object.assign(dialog.value, { ...handleRequestError(store, router, e), show: true }))
         }
         const submitData = async (e) => {
@@ -169,9 +167,12 @@ export default {
             }
         }
 
+        //Note: The empty error must be raised manually beacuse of a bug of the v-file-input formPicture.value.validate()
+        //is not working correctly if not validated at the backend and this might send nothing and still mark the form as valid
         const submitPicture = async (e) => {
             e.preventDefault()
             let formPictureIsValid = await isValidPicture()
+            console.log(formPictureIsValid.valid)
             if(formPictureIsValid.valid){
                 const formData = new FormData()
                 formData.append('profile_picture', pictureRef.value.files[0])
@@ -185,16 +186,15 @@ export default {
                         context.emit('update-user', true)
                     }
                 }).catch(e => {
-                    if (e.response && e.response.status === 422)
+                    if ((e.response && e.response.status === 422) || (e.response && e.response.status === 400))
                         Object.assign(customErrorMessages.value, e.response.data.errors)
                     else {
                         Object.assign(dialog.value, { ...handleRequestError(store, router, e), show: true })
-
                     }
                 })
-
                 loadingPicture.value = false
             }
+            
 
         }
         const isValidData = async () => {
@@ -223,6 +223,7 @@ export default {
             submitPicture,
             previewPicture,
             userPictureModel,
+            defaultUserPicture,
 
             isValidData,
             submitData,

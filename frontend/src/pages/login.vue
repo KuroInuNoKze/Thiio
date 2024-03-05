@@ -37,7 +37,7 @@ export default {
     const dataValidation = {
       emailRules: [
         v => (v && v.length > 0) || 'Email can\'t be empty',
-        v => (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(v)) || 'Must be a valid e-mail.',
+        v => (/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/.test(v)) || 'Must be a valid e-mail.',
       ],
       passwordRules: [
         v => (v && v.length > 0) || 'Password can\'t be empty',

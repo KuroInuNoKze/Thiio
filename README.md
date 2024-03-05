@@ -11,7 +11,11 @@ Requierement:
 Node js
 Npm
 
+<<<<<<< HEAD
 | Requierements:                               |    Official Page      |
+=======
+| Requierements:                                          |    Official Page      |
+>>>>>>> 3942f25 (Minor bugs)
 |---------------------------------------------------------|-----------------------|
 | Node JS and Npm                                         | (https://nodejs.org/) |
 
@@ -32,10 +36,14 @@ Frameworks and Modules
 
 Notes:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the actions that are been held between the fontend and the Endpoint API.
 =======
 - Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the accions that are been held between the fontend and the Endpoint API.
 >>>>>>> 61fdc0c (Readme 1)
+=======
+- Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the actions that are been held between the fontend and the Endpoint API.
+>>>>>>> 3942f25 (Minor bugs)
 - All pages except login,  are wrapped by a layout "AdminLayout" and cant be accesed without been logged in.
 - At src/assets/js there a small module for handle the axios Promise errors and establish the tittle and message for the dialog that is going to deliver the notification to the user.
 

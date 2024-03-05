@@ -72,6 +72,7 @@ export default {
             ).then((response) => {
                 items.value = response.data
             }).catch(e => Object.assign(dialog.value, {...handleRequestError(store, router, e), show: true}))
+
             loading.value = false
         }
         const headers = [

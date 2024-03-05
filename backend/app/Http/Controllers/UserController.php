@@ -94,7 +94,7 @@ class UserController extends Controller
             }
             return response()->json(['message' => 'File Uploaded.', 'profile_image'=>$user->profile_picture], 200);
         }
-        return response()->json(['message' => 'Didn\'t recive the file.'], 400);
+        return response()->json(['errors' => ['picture'=>'This field can\'t be empty.']], 400);
     }
     
     public function remove($id)
