@@ -11,15 +11,7 @@ Requierement:
 Node js
 Npm
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 | Requierements:                               |    Official Page      |
-=======
-| Requierements:                                          |    Official Page      |
->>>>>>> 3942f25 (Minor bugs)
-=======
-| Requierements:                               |    Official Page      |
->>>>>>> 7caab92 (Minor Bugs)
 |---------------------------------------------------------|-----------------------|
 | Node JS and Npm                                         | (https://nodejs.org/) |
 
@@ -40,14 +32,10 @@ Frameworks and Modules
 
 Notes:
 <<<<<<< HEAD
-<<<<<<< HEAD
 - Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the actions that are been held between the fontend and the Endpoint API.
 =======
 - Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the accions that are been held between the fontend and the Endpoint API.
 >>>>>>> 61fdc0c (Readme 1)
-=======
-- Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the actions that are been held between the fontend and the Endpoint API.
->>>>>>> 3942f25 (Minor bugs)
 - All pages except login,  are wrapped by a layout "AdminLayout" and cant be accesed without been logged in.
 - At src/assets/js there a small module for handle the axios Promise errors and establish the tittle and message for the dialog that is going to deliver the notification to the user.
 
@@ -141,8 +129,6 @@ There are a few endpoint on this projects:
 | http://localhost:8000/api/users/{id}                          |     Remove an User   |
 
 
-I follow architecture MVVM architecture for Vue and the Laravel backend offers a service-oriented architecture.
-Available test can be run by the command in the console  "php artisan test" or "vendor/bin/phpunit"
-For the Unit Testing, most of the time I just apply the Red-Green-Refactor.
+
 
 >>>>>>> 61fdc0c (Readme 1)
