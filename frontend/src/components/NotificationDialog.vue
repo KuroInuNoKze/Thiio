@@ -34,7 +34,7 @@ export default {
         const title = computed(() => props.title)
         const message = computed(() => props.message)
         const icon = computed(() => props.icon)
-        const close =  () => context.emit("closeDialog", false)
+        const close =  () => context.emit("closeDialog")
 
         return {
             close,
