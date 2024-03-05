@@ -1,5 +1,7 @@
 <template>
   <div class="login-page">
+    <NotificationDialog :dialog="dialog.show" :title="dialog.title" :message="dialog.message" :icon="dialog.icon"
+    @closeDialog="closeDialog" />
     <v-card class="login-card">
       <v-card-item>
         <v-form ref="loginForm" validate-on="submit" @submit.prevent="submit">
@@ -23,10 +25,18 @@ import axios from 'axios'
 import { useStore } from "vuex";
 
 import loginFormErrorMessages from '@/assets/js/errorMessages/loginFormErrorMessages'
+import { handleLoginRequestError } from '@/assets/js/utils'
+import NotificationDialog from '@/components/NotificationDialog.vue'
 
 export default {
   name: "Login",
   setup() {
+
+
+    const dialog = ref({ title: '', message: '', icon: '', show: false })
+    const closeDialog = () => { dialog.value.show = false }
+
+
     const loginForm = ref(null)
     const loading = ref(false)
     const message = ref('');
@@ -59,7 +69,8 @@ export default {
           store.dispatch('setUser', response.data.user)
           router.push('/dashboard')
         }).catch(e =>{
-          message.value = loginFormErrorMessages[e.response.status] != undefined ? loginFormErrorMessages[e.response.status] : loginFormErrorMessages['default']
+          Object.assign(dialog.value, { ...handleLoginRequestError(e), show: true })
+          // message.value = loginFormErrorMessages[e.response.status] != undefined ? loginFormErrorMessages[e.response.status] : loginFormErrorMessages['default']
         })
         loginForm.value.reset();
         loading.value = false
@@ -70,6 +81,8 @@ export default {
     }
 
     return {
+      dialog,
+      closeDialog,
       loginForm,
       data,
       message,
