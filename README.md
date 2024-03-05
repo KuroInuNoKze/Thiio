@@ -12,10 +12,14 @@ Node js
 Npm
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 | Requierements:                               |    Official Page      |
 =======
 | Requierements:                                          |    Official Page      |
 >>>>>>> 3942f25 (Minor bugs)
+=======
+| Requierements:                               |    Official Page      |
+>>>>>>> 7caab92 (Minor Bugs)
 |---------------------------------------------------------|-----------------------|
 | Node JS and Npm                                         | (https://nodejs.org/) |
 
