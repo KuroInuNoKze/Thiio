@@ -31,11 +31,7 @@ Frameworks and Modules
 - Vue Router -> For routing, and keep the instruders out with his Navigation Guards... and routing.
 
 Notes:
-<<<<<<< HEAD
 - Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the actions that are been held between the fontend and the Endpoint API.
-=======
-- Since its not a big project it there only one Custom Component thet i needed "NotificationDialog.vue", it's only functionlity is to notify about the accions that are been held between the fontend and the Endpoint API.
->>>>>>> 61fdc0c (Readme 1)
 - All pages except login,  are wrapped by a layout "AdminLayout" and cant be accesed without been logged in.
 - At src/assets/js there a small module for handle the axios Promise errors and establish the tittle and message for the dialog that is going to deliver the notification to the user.
 
@@ -49,16 +45,11 @@ All needed configurations can be found in (https://laravel.com/docs/10.x/configu
 but you dont need to, just get the password to the Data Base in the .env file and thats it.
 
 To start with a new set of data
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 5b9e505 (Readme 4)
 | Run in the console:                                        |        Command         |
 |------------------------------------------------------------|------------------------|
 | Run migrations so the tables can be iserted into the DB    | `php artisian migrate` |
 | Run the seed function to populate the table Users          | `php artisian db:seed` |
 | Run the backend                                            | `php artisian serve`   |
-<<<<<<< HEAD
 
 To start with previus set of data download the DB backup in the folder of the project, and restore it to a DB named "thiio_app" or change the name in the .env file in the backed folder root. Just fin the line that contains "DB_DATABASE="
 Requierement:
@@ -92,43 +83,3 @@ I follow architecture MVVM architecture for Vue and the Laravel backend offers a
 Available test can be run by the command in the console  "php artisan test" or "vendor/bin/phpunit"
 For the Unit Testing, most of the time I just apply the Red-Green-Refactor.
 
-=======
-| Run in the console:                                           |     Command    |
-|---------------------------------------------------------------|----------------|
-| Run migrations so the tables can be iserted into the DB       | `php artisian migrate` |
-| Run the seed function to populate the table Users             | `php artisian db:seed` |
-| Run the backend                                               | `php artisian serve`   |
-=======
->>>>>>> 5b9e505 (Readme 4)
-
-To start with previus set of data download the DB backup in the folder of the project, and restore it to a DB named "thiio_app" or change the name in the .env file in the backed folder root. Just fin the line that contains "DB_DATABASE="
-Requierement:
-- MySql
-
-Now once restored the DB and configured the .env file. We are ready.
-
-| RunRun in the console:                                    |        Command         |
-|-----------------------------------------------------------|------------------------|
-| Run the backend                                           |  `php artisian serve`  |
-
-
-There are a few endpoint on this projects:
-
-| Run in the console:                                           |     Objective        |
-|---------------------------------------------------------------|----------------------|
-| http://localhost:8000/apilogin/                               |        Login         |
-| http://localhost:8000/api/authenticated/                      | Check Authentication |
-| http://localhost:8000/api/users/                              |   Get Current User   |
-| http://localhost:8000/api/users/logout                        |        Log Out       |
-| http://localhost:8000/api/users/users                         |    Get All  Users    |
-| http://localhost:8000/api/users/create                        |     Add New User     |
-| http://localhost:8000/api/users/{id}                          |     Get One User     |
-| http://localhost:8000/api/users/{id}                          |    Update One User   |
-| http://localhost:8000/api/users/update-password/{id}          |   Update User Pass   |
-| http://localhost:8000/api/users/update-picture/{id}           |   Upd. User Picture  |
-| http://localhost:8000/api/users/{id}                          |     Remove an User   |
-
-
-
-
->>>>>>> 61fdc0c (Readme 1)
